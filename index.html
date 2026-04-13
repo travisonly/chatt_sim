@@ -702,7 +702,7 @@ async function callAPI(system,messages){
   try{
     const body={model:'claude-sonnet-4-20250514',max_tokens:1000,messages};
     if(system) body.system=system;
-    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+    const r=await fetch('https://tcm-proxy.jtravisadams1.workers.dev/claude',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
     const d=await r.json();
     return d.content?.[0]?.text||null;
   }catch(e){sysMsg('API error — check network.');return null;}
